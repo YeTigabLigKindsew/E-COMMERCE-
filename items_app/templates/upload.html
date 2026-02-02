@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}signup{% endblock %}
+{% block content %}
+<div class="w-full md:flex md:items-center md:justify-center">
+  <div class="mx-auto my-30 rounded-3xl bg-gray-200 py-6 px-5">
+    <h1 class="text-center text-lg font-bold">upload</h1>
+    <form method="post" class="flex flex-col gap-6" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div>
+        <label for="">Category</label>
+        {{ form.category }}
+      </div>
+      <div>
+        <label for="">Image</label>
+        {{ form.item_image }}
+      </div>
+      <div>
+        <label for="">Title</label>
+        {{ form.item_title }}
+      </div>
+      <div>
+        <label for="">Discription</label>
+        {{ form.item_discription }}
+      </div>
+      <button type="submit" class="btn w-full">submit</button>
+    </form>
+  </div>
+  
+</div>
+{% endblock %}

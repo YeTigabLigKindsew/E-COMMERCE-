@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}home{% endblock %}
+{% block content %}
+<main class="w-full relative clip-path">
+   <div class="w-full h-100 bg-pink-500 flex justify-around">
+     <img src="../static/image/mother.png" width="400px" height="400px" alt="the image of my mother" class="pb-3"/>
+     <div class="mt-10 px-10">
+       <h2 class="text-s text-2xl">እንኳን ወደ እናና ባህላዊ አልባሳት ድህረ ገጽ በሰላም መጣችሁ</h2>
+       <h3 class="text-s text-xl">የምንሰጣቸው አቃዎች</3>
+       <ul>
+         <li class="text-s text-lg">ልብስ</li>
+         <li class="text-s text-lg">ጫማ</li>
+       </ul>
+     </div>
+   </div>
+ </main>
+ <main class="w-full relative">
+   <h2 class="text-white text-center text-3xl font-bold py-3">የእቃ አይነቶች</h2>
+   <h3 class="text-center">የልብስ አይነቶች</h3>
+   <div class="overflow-x-auto overflow-y-hidden h-80 bg-gray-400 rounded flex items-start gap-4 py-3 px-3">
+    {% for dress_item in dress_items %}
+    <a href="{% url 'detail:item' dress_item.id %}">
+    <div class="min-w-[260px] h-72 flex-shrink-0 box-border rounded-md bg-gray-300 overflow-hidden shadow-md hover:shadow-2xl hover:scale-110 transition">
+      <img src="{{ dress_item.item_image.url }}"
+           alt=""
+           class="object-cover w-full h-52"/>
+
+      <div class="w-full px-2 py-2">
+      <h2>{{ dress_item.item_title }}</h2>
+      </div>
+    </div>
+    </a>
+    {% endfor %}
+   </div>
+   
+   
+   <h3 class="text-center">የጫማ አይነቶች</h3>
+   <div class="overflow-x-auto overflow-y-hidden h-80 bg-gray-400 rounded flex items-start gap-4 py-3 px-3">
+    {% for shoes_item in shoes_items %}
+    <a href="{% url 'detail:item' shoes_item.id %}">
+    <div class="min-w-[260px] h-72 flex-shrink-0 box-border rounded-md bg-gray-300 overflow-hidden shadow-md hover:shadow-2xl hover:scale-110 transition">
+      <img src="{{ shoes_item.item_image.url }}"
+           alt=""
+           class="object-cover w-full h-52"/>
+      <div class="w-full px-2 py-2">
+        <h2>{{ shoes_item.item_title }}</h2>
+      </div>
+    </div>
+    </a>
+    {% endfor %}
+   </div>
+ </main>
+{% endblock %}

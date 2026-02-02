@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}login{% endblock %}
+{% block content %}
+<div class="w-full md:flex md:items-center md:justify-center">
+  <div class="mx-auto my-30 rounded-3xl bg-gray-200 py-6 px-5">
+    <h1 class="text-center">login</h1>
+    <form method="post" class="flex flex-col gap-10">
+      {% csrf_token %}
+      <div>
+        <label for="" class="text-left block">username</label>
+        <input type="text" name="username" class="border-2 border-blue-400 w-full py-1 rounded">
+      </div>
+      <div>
+        <label for="" class="text-left block">password</label>
+        <input type="password" name="password" class="border-2 border-blue-400 w-full py-1 rounded">
+      </div>
+      <button type="submit" class="btn">submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
