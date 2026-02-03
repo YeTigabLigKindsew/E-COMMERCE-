@@ -43,3 +43,19 @@ def user_logout(request):
   logout(request)
   messages.success(request, "you succesfuly logout")
   return redirect('auth:login')
+
+"""
+only super user
+from django.contrib.admin.views.decorators import staff_member_required
+
+@staff_member_required
+def admin_action(request):
+    ...
+
+from django.contrib.auth.decorators import user_passes_test
+
+@user_passes_test(lambda u: u.is_superuser)
+def admin_action(request):
+    ...
+
+"""
