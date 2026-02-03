@@ -26,10 +26,10 @@
       <a href="{% url 'auth:logout' %}">
         <div class="btn">ውጣ</div>
       </a>
+      {% elif user.is_superuser %}
       <a href="{% url 'items:form' %}">
         <div class="btn">አዲስ ልቀቅ</div>
       </a>
-      
       {% else %}
       <a href="{% url 'auth:login' %}">
         <div class="btn">ግባ</div>
