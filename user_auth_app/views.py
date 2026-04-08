@@ -4,20 +4,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import CustemUserForm
-from items_app.models import ProductItems
+from items_app.models import ProductItems, ProductType
 # Create your views here.
 def home(request):
-  item1 = get_object_or_404(ProductItems, pk=1)
-  item2 = get_object_or_404(ProductItems, pk=2)
-  dress_items = ProductItems.objects.filter(category=item1.category, item_is_sold=False)#ልብስ
-  shoes_items = ProductItems.objects.filter(category=item2.category, item_is_sold=False)#ጫማ
-  return render(request, 'home.html', {"shoes_items": shoes_items, "dress_items": dress_items})
+  productType = ProductType.objects.all()
+  
+  context = {
+    "productTypes": productType,
+  }
+  return render(request, 'home.html', context)
   
 def user_signup(request):
   if request.method == "POST":
     form = CustemUserForm(request.POST)
     if form.is_valid():  
-      form.save()
+      user = form.save()
+      login(request, user)
       return redirect('auth:home')
   else:
     form = CustemUserForm()

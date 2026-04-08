@@ -23,12 +23,13 @@
       <a href="">
         <div class="btn">ምላሽ</div>
       </a>
+      {% if user.is_superuser %}
+        <a href="{% url 'items:form' %}">
+          <div class="btn">አዲስ ልቀቅ</div>
+        </a>
+      {% endif %}
       <a href="{% url 'auth:logout' %}">
         <div class="btn">ውጣ</div>
-      </a>
-      {% elif user.is_superuser %}
-      <a href="{% url 'items:form' %}">
-        <div class="btn">አዲስ ልቀቅ</div>
       </a>
       {% else %}
       <a href="{% url 'auth:login' %}">
